@@ -12,10 +12,7 @@ import "./home.css";
 
 const TestKonva = () => {
   const [dataStyle, setDataStyle] = useState(initialDataStyle);
-  const [selected, setSelected] = useState({
-    selected: "page",
-    selectedType: "general",
-  });
+
 
   const stageRef = useRef(null);
   const trRef = useRef();
@@ -29,17 +26,16 @@ const TestKonva = () => {
           stageRef, trRef,
           trNodes, setTrNodes,
           dataStyle, setDataStyle,
-          selected, setSelected,
         }}
       >
-          <div>
-            <div
-              id="page"
-              className="pageContainer"
-            >
-              <Page />
-            </div>
+        <div>
+          <div
+            id="page"
+            className="pageContainer"
+          >
+            <Page />
           </div>
+        </div>
 
       </HomeContext.Provider>
 

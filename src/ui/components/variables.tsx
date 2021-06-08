@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useCallback, useEffect, useContext, useRef } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Group, Rect, Text } from "react-konva";
 
 // HELPER
@@ -18,7 +18,6 @@ const VariableComponent = (props: any) => {
   const {
     trNodes, setTrNodes,
     dataStyle, setDataStyle,
-    selected, setSelected,
 
   } = useContext(HomeContext);
 
@@ -42,32 +41,20 @@ const VariableComponent = (props: any) => {
   const shapeRef = useRef();
 
 
-  useEffect(() => {
-    if (selected.selected === tempname) {
-
-    }
-  }, [selected.selected, trNodes, tempname])
-
   const onClickComponent = useCallback((e) => {
     const metaPressed = e.evt.shiftKey || e.evt.ctrlKey || e.evt.metaKey;
-    // console.log("suk", metaPressed)
-
-
-    // alert([...trNodes].concat(shapeRef.current).length)
 
     if (metaPressed) {
       const exist = trNodes.find(e => JSON.stringify(e.ref) === JSON.stringify(shapeRef.current));
       if (exist && trNodes.length > 1) {
         const newTrNodes = [...trNodes].filter(e => JSON.stringify(e.ref) !== JSON.stringify(shapeRef.current));
         setTrNodes(newTrNodes);
-        setSelected(newTrNodes[newTrNodes.length - 1].selected)
       }
       else {
         setTrNodes([...trNodes].concat({
           ref: shapeRef.current,
           selected: setSelectedComponent(component.variables, id)
         }));
-        setSelected(setSelectedComponent(component.variables, id));
       }
     }
     else {
@@ -75,23 +62,19 @@ const VariableComponent = (props: any) => {
         ref: shapeRef.current,
         selected: setSelectedComponent(component.variables, id)
       }]);
-      setSelected(setSelectedComponent(component.variables, id));
     }
 
-  }, [trNodes, setTrNodes, setSelected, id]);
+  }, [trNodes, setTrNodes, id]);
 
   const onDragVariable = useCallback((e) => {
     e = e.target.attrs;
     const { x: xNew, y: yNew } = e;
 
-    const newSelected = setSelectedComponent(component.variables, id);
-    setSelected(newSelected);
 
     const newDataStyle = onDragComponent(dataStyle, component.variables, id, parseInt(xNew), parseInt(yNew));
     setDataStyle(newDataStyle);
   }, [
     dataStyle, setDataStyle,
-    setSelected,
     id,
   ]);
 

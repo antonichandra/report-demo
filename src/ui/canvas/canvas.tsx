@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { Stage, Layer, Transformer } from "react-konva";
 
 // HELPER
@@ -22,6 +22,9 @@ const Canvas = (props: any) => {
 
   window.addEventListener('resize', reportWindowSize);
 
+  /*
+  To make Transformer select current ref (use trNodes)
+  */
   useEffect(() => {
     if (trNodes.length > 0 && trRef) {
       // trRef.current.nodes(trNodes.map(e => { return e.ref }));
@@ -49,11 +52,7 @@ const Canvas = (props: any) => {
           width={width}
         >
           <HomeContext.Provider value={{ ...contextData, stageRef, trRef }}>
-
-            {mappingAllComponent(dataStyle)
-              .map((e, idx) => {
-                return renderAllComponents(e)
-              })}
+            {mappingAllComponent(dataStyle).map((e, idx) => { return renderAllComponents(e) })}
             <Transformer
               ref={trRef}
               rotateEnabled={false}
