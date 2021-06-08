@@ -1,0 +1,62 @@
+.pageContainer {
+  background-color: #777777;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  overflow: hidden;
+
+  width: 80%;
+  max-width: 80%;
+  /* height: calc(100vh- 80px); */
+  float: left;
+}
+
+.reportTitle{
+  display: block;
+  top:0;
+  width: 100%;
+  height:80px;
+  background-color: maroon;
+}
+
+#menu {
+  display: none;
+  position: absolute;
+  width: 60px;
+  background-color: white;
+  box-shadow: 0 0 5px grey;
+  border-radius: 3px;
+}
+
+#menu button {
+  width: 100%;
+  background-color: white;
+  border: none;
+  margin: 0;
+  padding: 10px;
+}
+
+#menu button:hover {
+  background-color: lightgray;
+}
+
+#menuAfter {
+  display: none;
+  position: absolute;
+  width: 60px;
+  background-color: white;
+  box-shadow: 0 0 5px grey;
+  border-radius: 3px;
+}
+
+#menuAfter button {
+  width: 100%;
+  background-color: white;
+  border: none;
+  margin: 0;
+  padding: 10px;
+}
+
+#menuAfter button:hover {
+  background-color: lightgray;
+}
